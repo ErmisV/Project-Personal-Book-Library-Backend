@@ -21,47 +21,48 @@ public class Book {
 
     @Column(name = "book_pages")
     private int bookPages;
-
     public Book(){
 
     }
-    public Book(String name, String tag) {
-        bookName = name;
-        bookTag = tag;
+    public Book(String bookName, String bookAuthor, String bookTag, int bookPages) {
+        super();
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+        this.bookTag = bookTag;
+        this.bookPages = bookPages;
     }
 
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
 
+
     public String getName() {
         return bookName;
     }
-
     public void setName(String name) {
         bookName = name;
     }
 
+
     public String getTag() {
         return bookTag;
     }
-
     public void setTag(String tag) {
         bookTag = tag;
     }
 
-    public String getBookAuthor() {return bookAuthor;}
 
+    public String getBookAuthor() {return bookAuthor;}
     public void setBookAuthor(String bookAuthor) {this.bookAuthor = bookAuthor;}
+
 
     public int getBookPages() {
         return bookPages;
     }
-
     public void setBookPages(int bookPages) {
         this.bookPages = bookPages;
     }
