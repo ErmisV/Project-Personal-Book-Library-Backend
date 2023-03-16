@@ -40,19 +40,16 @@ public class Book {
     }
 
 
-    public String getName() {
+    public String getBookName() {
         return bookName;
     }
-    public void setName(String name) {
-        bookName = name;
-    }
+    public void setBookName(String bookName) {this.bookName = bookName;}
 
-
-    public String getTag() {
+    public String getBookTag() {
         return bookTag;
     }
-    public void setTag(String tag) {
-        bookTag = tag;
+    public void setBookTag(String bookTag) {
+        this.bookTag = bookTag;
     }
 
 
