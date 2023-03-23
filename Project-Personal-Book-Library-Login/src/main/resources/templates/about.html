@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>About PBL</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+                            <!-- navigation bar -->
+
+            <nav class="navbar navbar-inverse navbar fixed-top navbar-dark bg-dark">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <li class="navbar-brand">
+                            Personal Book Library
+                        </li>
+                    </div>
+
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/login}"> Login </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/registration}"> Registration </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="container">
+                 <h1> This is my Personal Library Project.  </h1>
+                <div class="row">
+                     It was made using : Spring, Maven, Hibernate, Thymeleaf and MySql.
+                </div>
+            </div>
+
+            <br>
+            <br>
+
+        <footer class = "footer">
+            <div class = "container">
+                <span>All Rights Reserved 2023 @ErmisV</span>
+            </div>
+        </footer>
+
+</body>
+</html>
