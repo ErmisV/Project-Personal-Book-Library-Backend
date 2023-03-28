@@ -49,6 +49,7 @@ public class BookController {
         book.setBookAuthor(bookDetails.getBookAuthor());
         book.setBookPages(bookDetails.getBookPages());
         book.setBookReads(bookDetails.getBookReads());
+        book.setBookProgress(bookDetails.getBookProgress());
         book.setBookTags(bookDetails.getBookTags());
         Book updatedBook = bookRepository.save(book);
         return  ResponseEntity.ok(updatedBook);

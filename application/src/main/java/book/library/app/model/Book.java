@@ -1,7 +1,6 @@
 package book.library.app.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Entity
 @Table(name = "books")
@@ -18,10 +17,13 @@ public class Book {
     private String bookAuthor;
 
     @Column(name = "book_pages")
-    private int bookPages;
+    private double bookPages;
 
     @Column(name = "book_reads")
-    private int bookReads;
+    private double bookReads;
+
+    @Column(name = "book_progress")
+    private double bookProgress;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "boot_Tags")
@@ -30,7 +32,7 @@ public class Book {
 
     }
 
-    public Book(String bookName, String bookAuthor, int bookPages, int bookReads, Tags bookTags) {
+    public Book(String bookName, String bookAuthor, double bookPages, double bookReads, Tags bookTags) {
         super();
         this.bookName = bookName;
         this.bookAuthor = bookAuthor;
@@ -55,21 +57,29 @@ public class Book {
     public String getBookAuthor() {return bookAuthor;}
     public void setBookAuthor(String bookAuthor) {this.bookAuthor = bookAuthor;}
 
-
-    public int getBookPages() {
+    public double getBookPages() {
         return bookPages;
     }
-    public void setBookPages(int bookPages) {
+    public void setBookPages(double bookPages) {
         this.bookPages = bookPages;
     }
 
-    public int getBookReads() {
+    public double getBookReads() {
         return bookReads;
     }
 
-    public void setBookReads(int bookReads) {
+    public void setBookReads(double bookReads) {
         this.bookReads = bookReads;
     }
+
+    public double getBookProgress() {
+        return Math.round((this.bookReads/this.bookPages)*100);
+    }
+    public void setBookProgress(double bookProgress) {
+        this.bookProgress = bookProgress;
+    }
+
+
     public Tags getBookTags() {
         return bookTags;
     }
