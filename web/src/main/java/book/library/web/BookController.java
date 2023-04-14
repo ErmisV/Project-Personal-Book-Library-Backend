@@ -6,12 +6,10 @@ import book.library.models.Book;
 import book.library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
-@Controller
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
 @RequestMapping("/api/v1/")
@@ -20,13 +18,13 @@ public class BookController {
     @Autowired
     private BookRepository bookRepository;
 
-    //get All books (List)(G) /REST API
+    //get All books (List) /REST API
     @GetMapping("/books")
     public List<Book> getAllBooks(){
         return bookRepository.findAll();
     }
 
-    //Create Book (G) /REST API
+    //Create Book /REST API
     @PostMapping("/books")
     public Book createBook(@RequestBody Book book){
         return bookRepository.save(book);

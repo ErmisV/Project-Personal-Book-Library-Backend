@@ -17,8 +17,6 @@
 	<description>Personal Project Library </description>
 
 	<modules>
-		<module>app</module>
-		<module>randlsys</module>
 		<module>model</module>
 		<module>service</module>
 		<module>repository</module>
