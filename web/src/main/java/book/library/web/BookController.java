@@ -1,14 +1,13 @@
 package book.library.web;
 
-
-import book.library.exceptions.ResourceNotFoundException;
 import book.library.models.Book;
-import book.library.repository.BookRepository;
+import book.library.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+
 
 @RestController
 @CrossOrigin (origins = "http://localhost:4200")
@@ -16,56 +15,40 @@ import java.util.*;
 public class BookController {
 
     @Autowired
-    private BookRepository bookRepository;
+    private BookService bookService;
 
-    //get All books (List) /REST API
-    @GetMapping("/books")
-    public List<Book> getAllBooks(){
-        return bookRepository.findAll();
-    }
-
-    //Create Book /REST API
+    //Create Book
     @PostMapping("/books")
     public Book createBook(@RequestBody Book book){
-        return bookRepository.save(book);
+        return bookService.createBookServ(book);
     }
 
-    //Get Book by id /REST API
+    //get All books (List)
+    @GetMapping("/books")
+    public List<Book> getAllBooks(){
+        return bookService.getAllBooksServ();
+    }
+
+    //Get Book by id
     @GetMapping("/books/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable long id)
     {
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id : " + id));
-        return ResponseEntity.ok(book);
+        return ResponseEntity.ok(bookService.getBookByIdServ(id));
     }
 
-    //Update Book by id /REST API
+    //Update Book by id
     @PutMapping("/books/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails){
 
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id : " + id));
 
-        book.setBookName(bookDetails.getBookName());
-        book.setBookAuthor(bookDetails.getBookAuthor());
-        book.setBookPages(bookDetails.getBookPages());
-        book.setBookReads(bookDetails.getBookReads());
-        book.setBookProgress(bookDetails.getBookProgress());
-        book.setBookTags(bookDetails.getBookTags());
-        Book updatedBook = bookRepository.save(book);
-        return  ResponseEntity.ok(updatedBook);
+        return  ResponseEntity.ok(bookService.updateBookServ(id, bookDetails));
     }
 
-    //Delete Book by id /REST API
+    //Delete Book by id
     @DeleteMapping("/books/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteBook(@PathVariable Long id){
-        Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id:" + id));
-        bookRepository.delete(book);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return  ResponseEntity.ok(response);
-    }
 
+        return  ResponseEntity.ok(bookService.deleteBookServ(id));
+    }
 
 }
