@@ -17,10 +17,8 @@
 	<description>Personal Project Library </description>
 
 	<modules>
-		<module>model</module>
-		<module>service</module>
-		<module>repository</module>
-		<module>web</module>
+		<module>Andromeda-Main</module>
+		<module>Andromeda-Common</module>
 	</modules>
 
 	<properties>
